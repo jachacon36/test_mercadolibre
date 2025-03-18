@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.testmercadolibre"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.testmercadolibre"
@@ -42,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
     packaging {
         resources {
@@ -71,4 +71,7 @@ dependencies {
     kapt("androidx.hilt:hilt-compiler:1.2.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 }
