@@ -80,3 +80,27 @@ fun ComponetsJSONDTO.toDomainModel(): ComponetsJSONDomainModel {
     )
 }
 
+fun SearchDTO.toDomainModel(): SearchDomainModel {
+    return SearchDomainModel(
+        results = this.results.map { it.toDomainModel() }
+    )
+}
+
+fun ResultDTO.toDomainModel(): ResultDomainModel {
+    return ResultDomainModel(
+        id = this.id,
+        title = this.title,
+        price = this.price,
+        thumbnail = this.thumbnail,
+        installments = this.installments?.toDomainModel(),
+        shipping = this.shipping.toDomainModel()
+    )
+}
+
+fun InstallmentsDTO.toDomainModel(): InstallmentsDomainModel {
+    return InstallmentsDomainModel(
+        quantity = this.quantity,
+        amount = this.amount
+    )
+}
+
