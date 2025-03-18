@@ -1,3 +1,3 @@
 package com.example.testmercadolibre.domain.model
 
-data class UrlModel(val src: String)
+data class UrlDomainModel(val src: String)

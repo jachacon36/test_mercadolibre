@@ -1,5 +1,5 @@
 package com.example.testmercadolibre.domain.model
 
-data class ShippingModel (
+data class ShippingDomainModel (
     val free_shipping: Boolean
 )

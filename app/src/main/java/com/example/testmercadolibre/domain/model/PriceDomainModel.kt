@@ -1,5 +1,5 @@
 package com.example.testmercadolibre.domain.model
 
-data class PictureModel(
-    val url: UrlModel
+data class PriceDomainModel (
+    val value :String
 )
