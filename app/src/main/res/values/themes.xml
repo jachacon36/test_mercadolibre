@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <style name="Theme.TestMercadolibre.Splash" parent="Theme.SplashScreen">
+            <item name="windowSplashScreenBackground">@color/colorPrimary</item>
+            <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+            <item name="windowSplashScreenAnimationDuration">300</item>
+            <item name="postSplashScreenTheme">@style/Theme.TestMercadolibre</item>
+        </style>
+    
     <style name="Theme.TestMercadolibre" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>

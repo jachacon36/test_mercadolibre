@@ -74,4 +74,6 @@ dependencies {
     implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
     implementation("com.jakewharton.timber:timber:5.0.1")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    implementation ("androidx.navigation:navigation-compose:2.5.3")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 }

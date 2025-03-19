@@ -17,7 +17,9 @@ import androidx.compose.ui.unit.dp
 import com.example.testmercadolibre.R
 
 @Composable
-fun SearchView(modifier: Modifier = Modifier) {
+fun SearchView(
+    modifier: Modifier = Modifier,
+) {
     TextField(
         value = "Samsung",
         shape = RoundedCornerShape(30.dp),

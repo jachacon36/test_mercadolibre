@@ -6,48 +6,41 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.testmercadolibre.presentation.viewmodel.SearchVewModel
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
+import com.example.testmercadolibre.navigation.NavGraph
 import com.example.testmercadolibre.ui.theme.TestMercadolibreTheme
 import dagger.hilt.android.AndroidEntryPoint
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.testmercadolibre.presentation.presentation.HomeScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         setContent {
-            TestMercadolibreTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    HomeScreen()
-                }
+            MainScreen()
+        }
+    }
+
+    @Composable
+    fun MainScreen() {
+        TestMercadolibreTheme {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.background
+            ) {
+                val navController = rememberNavController()
+                NavGraph(navController = navController)
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val viewModel : SearchVewModel = hiltViewModel()
-    viewModel.getSearch("samsung")
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TestMercadolibreTheme {
-        Greeting("Android")
+    @Composable
+    @Preview(showBackground = true)
+    fun DefaultPreview() {
+        MainScreen()
     }
 }
