@@ -7,7 +7,7 @@
             <item name="windowSplashScreenAnimationDuration">300</item>
             <item name="postSplashScreenTheme">@style/Theme.TestMercadolibre</item>
         </style>
-    
+
     <style name="Theme.TestMercadolibre" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
