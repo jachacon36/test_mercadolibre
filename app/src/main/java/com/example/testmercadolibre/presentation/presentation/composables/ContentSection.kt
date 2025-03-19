@@ -25,9 +25,24 @@ fun ContentSection(state: SearchState) {
                 .padding(20.dp)
         ) {
             Column {
-                ProgressBar(visible = state.isLoading)
-                ExhibitorRow(visible = state.isLoading)
-                PromotionsCardView(visible = state.isLoading)
+                when {
+                    state.error -> {
+                        ErrorView()
+                    }
+
+                    state.data != null -> {
+                        SearchResultList(items = state.data.results)
+                    }
+
+                    state.isLoading -> {
+                        ProgressBar()
+                    }
+
+                    else -> {
+                        ExhibitorRow()
+                        PromotionsCardView()
+                    }
+                }
             }
         }
     }

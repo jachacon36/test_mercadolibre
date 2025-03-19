@@ -31,7 +31,7 @@ class SearchViewModel @Inject constructor(private val getSearchUseCase: GetSearc
                 }
 
                 is ViewState.Error -> {
-                    _searchState.value = SearchState(error = it.message.toString())
+                    _searchState.value = SearchState(error = true)
                 }
             }
         }.launchIn(viewModelScope)

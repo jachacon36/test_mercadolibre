@@ -8,10 +8,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun ProgressBar(visible: Boolean) {
-    if (visible) {
-        CircularProgressIndicator(
-            modifier = Modifier.fillMaxSize().wrapContentSize(Alignment.Center)
-        )
-    }
+fun ProgressBar() {
+    CircularProgressIndicator(
+        modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.Center)
+    )
 }

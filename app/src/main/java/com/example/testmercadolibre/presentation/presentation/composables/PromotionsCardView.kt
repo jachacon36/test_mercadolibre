@@ -17,24 +17,22 @@ import androidx.compose.ui.unit.sp
 import com.example.testmercadolibre.R
 
 @Composable
-fun PromotionsCardView(visible: Boolean) {
-    if (!visible) {
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp),
-            shape = RoundedCornerShape(6.dp)
-        ) {
-            Column {
-                Text(
-                    text = stringResource(id = R.string.promotions),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 8.sp,
-                    modifier = Modifier.padding(12.dp)
-                )
-                Divider(color = colorResource(id = R.color.background), thickness = 0.5.dp)
-                PromotionsRow()
-            }
+fun PromotionsCardView() {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp),
+        shape = RoundedCornerShape(6.dp)
+    ) {
+        Column {
+            Text(
+                text = stringResource(id = R.string.promotions),
+                fontWeight = FontWeight.Bold,
+                fontSize = 8.sp,
+                modifier = Modifier.padding(12.dp)
+            )
+            Divider(color = colorResource(id = R.color.background), thickness = 0.5.dp)
+            PromotionsRow()
         }
     }
 }
