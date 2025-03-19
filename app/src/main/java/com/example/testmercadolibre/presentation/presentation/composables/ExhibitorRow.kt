@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun ExhibitorRow(visible: Boolean) {
-    if (visible) {
+    if (!visible) {
         // Implement your ExhibitorRow composable here
     }
 }

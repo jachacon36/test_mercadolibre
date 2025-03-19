@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class SearchVewModel @Inject constructor(private val getSearchUseCase: GetSearchUseCase) :
+class SearchViewModel @Inject constructor(private val getSearchUseCase: GetSearchUseCase) :
     ViewModel() {
 
     private val _searchState = mutableStateOf(SearchState())

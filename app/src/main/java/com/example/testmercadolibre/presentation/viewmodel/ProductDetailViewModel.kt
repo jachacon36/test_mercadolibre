@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductDetailVewModel @Inject constructor(private val getProductDetailsUseCase: GetProductDetailsUseCase) :
+class ProductDetailViewModel @Inject constructor(private val getProductDetailsUseCase: GetProductDetailsUseCase) :
     ViewModel() {
 
     private val _productDetailState = mutableStateOf(ProductDetailState())

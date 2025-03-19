@@ -18,7 +18,7 @@ import com.example.testmercadolibre.R
 
 @Composable
 fun PromotionsCardView(visible: Boolean) {
-    if (visible) {
+    if (!visible) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
