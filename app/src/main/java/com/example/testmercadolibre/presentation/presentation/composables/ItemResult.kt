@@ -39,7 +39,11 @@ fun ItemResult(item: ResultDomainModel) {
                 .padding(10.dp)
         ) {
             Image(
-                painter = rememberAsyncImagePainter(item.thumbnail),
+                painter = rememberAsyncImagePainter (
+                    model = item.thumbnail,
+                    placeholder = painterResource(R.drawable.thumbnail),
+                    error = painterResource(R.drawable.baseline_broken_image)
+                ),
                 contentDescription = null,
                 modifier = Modifier
                     .height(180.dp)
