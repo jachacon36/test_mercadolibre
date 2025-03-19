@@ -1,5 +1,5 @@
 package com.example.testmercadolibre.domain.model
 
-data class ElementDomianModel(
+data class ElementDomainModel(
     val picture: PictureDomainModel
 )

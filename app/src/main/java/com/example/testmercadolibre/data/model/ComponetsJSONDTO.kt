@@ -1,3 +1,8 @@
 package com.example.testmercadolibre.data.model
 
-data class ComponetsJSONDTO(val components: List<ComponentDTO>)
+import com.google.gson.annotations.SerializedName
+
+data class ComponetsJSONDTO(
+    @SerializedName("components")
+    val components: List<ComponentDTO>
+)

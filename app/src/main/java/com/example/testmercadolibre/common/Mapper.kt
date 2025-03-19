@@ -11,8 +11,8 @@ fun ComponentDTO.toDomainModel(): ComponentDomainModel {
     )
 }
 
-fun ElementDTO.toDomainModel(): ElementDomianModel {
-    return ElementDomianModel(
+fun ElementDTO.toDomainModel(): ElementDomainModel {
+    return ElementDomainModel(
         picture = this.picture.toDomainModel()
     )
 }
@@ -33,8 +33,8 @@ fun DetailProductDTO.toDomainModel(): DetailProductDomainModel {
     return DetailProductDomainModel(
         title = this.title,
         price = this.price,
-        initial_quantity = this.initial_quantity,
-        available_quantity = this.available_quantity,
+        initialQuantity = this.initialQuantity,
+        availableQuantity = this.initialQuantity,
         condition = this.condition,
         pictures = this.pictures.map { it.toDomainModel() },
         shipping = this.shipping.toDomainModel()
@@ -49,7 +49,7 @@ fun PictureURLDTO.toDomainModel(): PictureURLDomainModel {
 
 fun ShippingDTO.toDomainModel(): ShippingDomainModel {
     return ShippingDomainModel(
-        free_shipping = this.free_shipping
+        freeShipping = this.freeShipping
     )
 }
 
@@ -104,3 +104,11 @@ fun InstallmentsDTO.toDomainModel(): InstallmentsDomainModel {
     )
 }
 
+fun TokenResponseDTO.toDomainModel(): TokenResponseDomainModel {
+    return TokenResponseDomainModel(
+        accessToken = this.accessToken,
+        expiresIn = this.expiresIn,
+        tokenType = this.tokenType,
+        refreshToken = this.refreshToken
+    )
+}

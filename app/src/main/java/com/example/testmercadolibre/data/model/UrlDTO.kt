@@ -1,3 +1,8 @@
 package com.example.testmercadolibre.data.model
 
-data class UrlDTO(val src: String)
+import com.google.gson.annotations.SerializedName
+
+data class UrlDTO(
+    @SerializedName("src")
+    val src: String
+)

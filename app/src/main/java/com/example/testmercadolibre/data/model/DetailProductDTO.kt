@@ -1,10 +1,20 @@
 package com.example.testmercadolibre.data.model
-data class DetailProductDTO (
-    val title :String,
-    val price : Long,
-    val initial_quantity: Int = 0,
-    val available_quantity: Int =0,
+
+import com.google.gson.annotations.SerializedName
+
+data class DetailProductDTO(
+    @SerializedName("title")
+    val title: String,
+    @SerializedName("price")
+    val price: Long,
+    @SerializedName("initial_quantity")
+    val initialQuantity: Int = 0,
+    @SerializedName("available_quantity")
+    val availableQuantity: Int = 0,
+    @SerializedName("condition")
     val condition: String,
+    @SerializedName("pictures")
     val pictures: List<PictureURLDTO>,
-    val shipping : ShippingDTO
+    @SerializedName("shipping")
+    val shipping: ShippingDTO
 )

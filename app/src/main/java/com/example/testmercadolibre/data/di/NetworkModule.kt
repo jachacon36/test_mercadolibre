@@ -14,8 +14,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Provider
 import javax.inject.Singleton
-
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -23,13 +23,13 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(authInterceptorProvider: Provider<AuthInterceptor>): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor(TimberLoggingInterceptor())
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(AuthInterceptor())
+            .addInterceptor(authInterceptorProvider.get())
             .build()
     }
 
@@ -55,4 +55,9 @@ class NetworkModule {
         return RepositoryImpl(apiService)
     }
 
+    @Provides
+    @Singleton
+    fun providerAuthInterceptor(apiServiceProvider: Provider<ApiService>): AuthInterceptor {
+        return AuthInterceptor(apiServiceProvider)
+    }
 }
