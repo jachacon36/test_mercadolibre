@@ -14,6 +14,7 @@ import com.example.testmercadolibre.presentation.viewmodel.SearchVewModel
 import com.example.testmercadolibre.ui.theme.TestMercadolibreTheme
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.testmercadolibre.presentation.presentation.HomeScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    HomeScreen()
                 }
             }
         }
