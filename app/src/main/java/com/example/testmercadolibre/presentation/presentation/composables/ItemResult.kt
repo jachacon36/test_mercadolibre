@@ -41,7 +41,6 @@ fun ItemResult(item: ResultDomainModel) {
             Image(
                 painter = rememberAsyncImagePainter (
                     model = item.thumbnail,
-                    placeholder = painterResource(R.drawable.thumbnail),
                     error = painterResource(R.drawable.baseline_broken_image)
                 ),
                 contentDescription = null,
