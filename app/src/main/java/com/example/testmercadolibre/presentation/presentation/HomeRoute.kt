@@ -1,12 +1,13 @@
 package com.example.testmercadolibre.presentation.presentation
 
 import androidx.compose.runtime.Composable
-import com.example.testmercadolibre.presentation.viewmodel.SearchViewModel
+import com.example.testmercadolibre.presentation.viewmodel.HomeViewModel
 
 @Composable
 fun HomeRoute(
-    searchViewModel: SearchViewModel,
+    homeViewModel: HomeViewModel,
+    onSearch: (String) -> Unit = {}
 ) {
-    val state = searchViewModel.searchState.value
-    HomeScreen(state = state, onSearch = searchViewModel::getSearch)
+    val state = homeViewModel.homeState.value
+    HomeScreen(state = state, onSearch = {onSearch(it)})
 }

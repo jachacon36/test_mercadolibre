@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.example.testmercadolibre.R
 
 @Composable
-fun TopSection(onSearch: (String) -> Unit = {}) {
+fun TopSection(query : String, onSearch: (String) -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,7 +40,7 @@ fun TopSection(onSearch: (String) -> Unit = {}) {
                 modifier = Modifier.size(30.dp)
             )
             Spacer(modifier = Modifier.width(10.dp))
-            SearchView(modifier = Modifier.weight(1f), onSearch = { onSearch(it) })
+            SearchView(modifier = Modifier.weight(1f), query = query,onSearch = { onSearch(it) })
             Spacer(modifier = Modifier.width(10.dp))
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_shopping_cart),
@@ -79,5 +79,5 @@ fun TopSection(onSearch: (String) -> Unit = {}) {
 @Preview(showBackground = true)
 @Composable
 fun TopSectionPreview() {
-    TopSection()
+    TopSection(query = "", onSearch = {})
 }

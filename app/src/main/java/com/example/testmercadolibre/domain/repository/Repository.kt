@@ -1,12 +1,9 @@
 package com.example.testmercadolibre.domain.repository
 
-import com.example.testmercadolibre.data.model.TokenResponseDTO
+import com.example.testmercadolibre.domain.model.ComponetsJSONDomainModel
 import com.example.testmercadolibre.domain.model.DetailProductDomainModel
 import com.example.testmercadolibre.domain.model.SearchDomainModel
 import com.example.testmercadolibre.domain.model.TokenResponseDomainModel
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
 
 interface Repository {
 
@@ -20,4 +17,6 @@ interface Repository {
         clientSecret: String,
         refreshToken: String
     ): TokenResponseDomainModel
+
+    suspend fun getHome(): ComponetsJSONDomainModel
 }

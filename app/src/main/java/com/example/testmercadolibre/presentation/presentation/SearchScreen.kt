@@ -8,25 +8,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.testmercadolibre.R
-import com.example.testmercadolibre.presentation.presentation.composables.ContentSectionHome
+import com.example.testmercadolibre.presentation.presentation.composables.ContentSectionSearch
 import com.example.testmercadolibre.presentation.presentation.composables.TopSection
-import com.example.testmercadolibre.presentation.state.HomeState
 import com.example.testmercadolibre.presentation.state.SearchState
 
 @Composable
-fun HomeScreen(state: HomeState, onSearch: (String) -> Unit = {}) {
+fun SearchScreen(state: SearchState, onSearch: (String) -> Unit = {}, query: String) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.background))
     ) {
-        TopSection(query = "", onSearch = { onSearch(it) })
-        ContentSectionHome(state = state)
+        TopSection(query = query,onSearch = { onSearch(it) })
+        ContentSectionSearch(state = state)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun HomeScreenPreview() {
-    HomeScreen(HomeState(), onSearch = {})
+fun SearchScreenPreview() {
+    SearchScreen(SearchState(), query = "")
 }

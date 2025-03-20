@@ -28,8 +28,9 @@ import androidx.compose.ui.text.input.ImeAction
 fun SearchView(
     modifier: Modifier = Modifier,
     onSearch: (String) -> Unit = {},
+    query: String,
 ) {
-    var searchText by remember { mutableStateOf("") }
+    var searchText by remember { mutableStateOf(query) }
     val keyboardController = LocalSoftwareKeyboardController.current
 
     TextField(
@@ -75,5 +76,5 @@ fun SearchView(
 @Preview(showBackground = true)
 @Composable
 fun SearchViewPreview() {
-    SearchView()
+    SearchView(query = "", onSearch = {})
 }

@@ -1,7 +1,9 @@
 package com.example.testmercadolibre.data.repository
 
 import com.example.testmercadolibre.common.toDomainModel
+import com.example.testmercadolibre.data.model.ComponetsJSONDTO
 import com.example.testmercadolibre.data.network.ApiService
+import com.example.testmercadolibre.domain.model.ComponetsJSONDomainModel
 import com.example.testmercadolibre.domain.model.DetailProductDomainModel
 import com.example.testmercadolibre.domain.model.SearchDomainModel
 import com.example.testmercadolibre.domain.model.TokenResponseDomainModel
@@ -28,5 +30,10 @@ class RepositoryImpl @Inject constructor(private val apiService: ApiService) : R
         return apiService.refreshToken(grantType, clientId, clientSecret, refreshToken)
             .toDomainModel()
     }
+
+    override suspend fun getHome(): ComponetsJSONDomainModel {
+        return apiService.getHome().toDomainModel()
+    }
+
 
 }

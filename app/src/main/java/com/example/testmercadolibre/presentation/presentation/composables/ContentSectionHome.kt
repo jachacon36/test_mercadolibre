@@ -10,10 +10,10 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.testmercadolibre.presentation.state.SearchState
+import com.example.testmercadolibre.presentation.state.HomeState
 
 @Composable
-fun ContentSection(state: SearchState) {
+fun ContentSectionHome(state: HomeState) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -25,24 +25,8 @@ fun ContentSection(state: SearchState) {
                 .padding(20.dp)
         ) {
             Column {
-                when {
-                    state.error -> {
-                        ErrorView()
-                    }
-
-                    state.data != null -> {
-                        SearchResultList(items = state.data.results)
-                    }
-
-                    state.isLoading -> {
-                        ProgressBar()
-                    }
-
-                    else -> {
-                        ExhibitorRow()
-                        PromotionsCardView()
-                    }
-                }
+                ExhibitorRow()
+                PromotionsColumn()
             }
         }
     }

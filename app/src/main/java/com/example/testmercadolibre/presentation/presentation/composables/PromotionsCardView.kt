@@ -32,7 +32,7 @@ fun PromotionsCardView() {
                 modifier = Modifier.padding(12.dp)
             )
             Divider(color = colorResource(id = R.color.background), thickness = 0.5.dp)
-            PromotionsRow()
+            PromotionsColumn()
         }
     }
 }
