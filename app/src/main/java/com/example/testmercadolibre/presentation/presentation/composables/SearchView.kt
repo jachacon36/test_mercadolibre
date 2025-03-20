@@ -59,8 +59,11 @@ fun SearchView(
         ),
         keyboardActions = KeyboardActions(
             onSearch = {
-                onSearch(searchText)
-                keyboardController?.hide()
+                val trimmedText = searchText.trim().replace(Regex("\\s+"), " ")
+                if (trimmedText.isNotEmpty()) {
+                    onSearch(trimmedText)
+                    keyboardController?.hide()
+                }
             }
         ),
         keyboardOptions = KeyboardOptions.Default.copy(

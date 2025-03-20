@@ -27,7 +27,12 @@ class SearchViewModel @Inject constructor(private val getSearchUseCase: GetSearc
                 }
 
                 is ViewState.Success -> {
-                    _searchState.value = SearchState(data = it.data)
+                    when {
+                        it.data?.results.isNullOrEmpty() -> _searchState.value =
+                            SearchState(error = true)
+
+                        else -> _searchState.value = SearchState(data = it.data)
+                    }
                 }
 
                 is ViewState.Error -> {
