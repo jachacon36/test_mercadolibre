@@ -1,6 +1,8 @@
 package com.example.testmercadolibre.data.di
 
+import android.content.Context
 import com.example.testmercadolibre.data.network.ApiService
+import com.example.testmercadolibre.data.network.LocalService
 import com.example.testmercadolibre.data.repository.RepositoryImpl
 import com.example.testmercadolibre.domain.repository.Repository
 import com.example.testmercadolibre.utils.AuthInterceptor
@@ -9,6 +11,7 @@ import com.example.testmercadolibre.utils.TimberLoggingInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -51,13 +54,19 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providerRepositoryImpl(apiService: ApiService): Repository {
-        return RepositoryImpl(apiService)
+    fun providerRepositoryImpl(apiService: ApiService, localService: LocalService): Repository {
+        return RepositoryImpl(apiService, localService)
     }
 
     @Provides
     @Singleton
     fun providerAuthInterceptor(apiServiceProvider: Provider<ApiService>): AuthInterceptor {
         return AuthInterceptor(apiServiceProvider)
+    }
+
+    @Provides
+    @Singleton
+    fun providerLocalService(@ApplicationContext context: Context): LocalService {
+        return LocalService(context)
     }
 }

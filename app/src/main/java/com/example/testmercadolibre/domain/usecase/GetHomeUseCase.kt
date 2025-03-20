@@ -3,7 +3,6 @@ package com.example.testmercadolibre.domain.usecase
 import com.example.testmercadolibre.common.ViewState
 import com.example.testmercadolibre.data.repository.RepositoryImpl
 import com.example.testmercadolibre.domain.model.ComponetsJSONDomainModel
-import com.example.testmercadolibre.domain.model.SearchDomainModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

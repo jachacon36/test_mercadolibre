@@ -3,6 +3,7 @@ package com.example.testmercadolibre.data.repository
 import com.example.testmercadolibre.common.toDomainModel
 import com.example.testmercadolibre.data.model.ComponetsJSONDTO
 import com.example.testmercadolibre.data.network.ApiService
+import com.example.testmercadolibre.data.network.LocalService
 import com.example.testmercadolibre.domain.model.ComponetsJSONDomainModel
 import com.example.testmercadolibre.domain.model.DetailProductDomainModel
 import com.example.testmercadolibre.domain.model.SearchDomainModel
@@ -11,7 +12,7 @@ import com.example.testmercadolibre.domain.repository.Repository
 import javax.inject.Inject
 
 
-class RepositoryImpl @Inject constructor(private val apiService: ApiService) : Repository {
+class RepositoryImpl @Inject constructor(private val apiService: ApiService, private val localService : LocalService) : Repository {
 
     override suspend fun getSearch(query: String): SearchDomainModel {
         return apiService.getSearch(query).toDomainModel()
@@ -32,7 +33,8 @@ class RepositoryImpl @Inject constructor(private val apiService: ApiService) : R
     }
 
     override suspend fun getHome(): ComponetsJSONDomainModel {
-        return apiService.getHome().toDomainModel()
+        val homeData = localService.getHome()
+        return homeData?.toDomainModel() ?: throw Exception("Error loading home data from JSON")
     }
 
 

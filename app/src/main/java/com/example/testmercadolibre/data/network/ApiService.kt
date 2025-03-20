@@ -1,6 +1,5 @@
 package com.example.testmercadolibre.data.network
 
-import com.example.testmercadolibre.data.model.ComponetsJSONDTO
 import com.example.testmercadolibre.data.model.DetailProductDTO
 import com.example.testmercadolibre.data.model.SearchDTO
 import com.example.testmercadolibre.data.model.TokenResponseDTO
@@ -27,7 +26,4 @@ interface ApiService {
         @Field("client_secret") clientSecret: String,
         @Field("refresh_token") refreshToken: String,
     ): TokenResponseDTO
-
-    @GET("/items/{id}")
-    suspend fun getHome(): ComponetsJSONDTO
 }

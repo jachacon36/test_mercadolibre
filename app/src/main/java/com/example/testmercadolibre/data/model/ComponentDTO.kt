@@ -6,7 +6,7 @@ data class ComponentDTO(
     @SerializedName("type")
     val type: String,
     @SerializedName("elements")
-    val elements: List<ElementDTO>,
+    val elements: List<ElementDTO>? = arrayListOf(),
     @SerializedName("items")
-    val items: List<ItemDTO>
+    val items: List<ItemDTO>? = arrayListOf()
 )

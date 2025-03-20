@@ -6,8 +6,8 @@ import com.example.testmercadolibre.domain.model.*
 fun ComponentDTO.toDomainModel(): ComponentDomainModel {
     return ComponentDomainModel(
         type = this.type,
-        elements = this.elements.map { it.toDomainModel() },
-        items = this.items.map { it.toDomainModel() }
+        elements = this.elements?.map { it.toDomainModel() } ?: emptyList(),
+        items = this.items?.map { it.toDomainModel() } ?: emptyList()
     )
 }
 

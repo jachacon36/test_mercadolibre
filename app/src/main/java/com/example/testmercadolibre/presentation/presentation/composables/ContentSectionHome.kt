@@ -25,8 +25,23 @@ fun ContentSectionHome(state: HomeState) {
                 .padding(20.dp)
         ) {
             Column {
-                ExhibitorRow()
-                PromotionsColumn()
+                Column {
+                    when {
+                        state.error -> {
+                            ErrorView()
+                        }
+
+                        state.data != null -> {
+                            ExhibitorRow(state.data[0].elements?.take(5) ?: emptyList())
+                            PromotionsColumn()
+                        }
+
+                        state.isLoading -> {
+                            ProgressBar()
+                        }
+                    }
+                }
+
             }
         }
     }

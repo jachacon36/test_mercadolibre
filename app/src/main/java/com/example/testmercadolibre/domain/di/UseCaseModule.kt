@@ -3,6 +3,7 @@ package com.example.testmercadolibre.domain.di
 import com.example.testmercadolibre.domain.usecase.GetSearchUseCase
 import com.example.testmercadolibre.domain.usecase.GetProductDetailsUseCase
 import com.example.testmercadolibre.data.repository.RepositoryImpl
+import com.example.testmercadolibre.domain.usecase.GetHomeUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,4 +26,9 @@ class UseCaseModule {
         return GetProductDetailsUseCase(repositoryImpl)
     }
 
+    @Provides
+    @Singleton
+    fun getGetHomeUseCaseProvider(repositoryImpl: RepositoryImpl): GetHomeUseCase {
+        return GetHomeUseCase(repositoryImpl)
+    }
 }
