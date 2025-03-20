@@ -22,7 +22,7 @@ class SearchViewModel @Inject constructor(private val getSearchUseCase: GetSearc
         getSearchUseCase.invoke(query = query).onEach {
             when (it) {
                 is ViewState.Loading -> {
-                    _searchState.value = _searchState.value.copy(isLoading = true)
+                    _searchState.value = _searchState.value.copy(isLoading = true, data = null, error = false)
                 }
 
                 is ViewState.Success -> {
