@@ -1,5 +1,6 @@
 package com.example.testmercadolibre.presentation.presentation
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,14 +15,23 @@ import com.example.testmercadolibre.presentation.state.SearchState
 import com.example.testmercadolibre.utils.Constant.SEARCH
 
 @Composable
-fun SearchScreen(state: SearchState, onSearch: (String) -> Unit = {}, query: String, onItemSelected: (String) -> Unit = {}) {
+fun SearchScreen(
+    state: SearchState,
+    onSearch: (String) -> Unit = {},
+    query: String,
+    onItemSelected: (String) -> Unit = {},
+    onBackPressed: () -> Unit = {},
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.background))
     ) {
-        TopBar(query = query, viewType = SEARCH,onSearch = { onSearch(it) })
+        TopBar(query = query, viewType = SEARCH, onSearch = { onSearch(it) })
         ContentSectionSearch(state = state, onItemSelected = onItemSelected)
+    }
+    BackHandler {
+        onBackPressed()
     }
 }
 

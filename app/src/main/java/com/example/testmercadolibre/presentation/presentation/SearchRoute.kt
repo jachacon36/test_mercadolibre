@@ -9,14 +9,22 @@ fun SearchRoute(
     searchViewModel: SearchViewModel,
     query: String,
     onItemSelected: (String) -> Unit = {},
+    onBackPressed: () -> Unit = {},
 ) {
-    LaunchedEffect(Unit) {
-        searchViewModel.getSearch(query)
-    }
     val state = searchViewModel.searchState.value
+    LaunchedEffect(Unit) {
+        if (state.data == null) {
+            searchViewModel.getSearch(query)
+        }
+    }
     SearchScreen(
         state = state,
         query = query,
         onSearch = searchViewModel::getSearch,
-        onItemSelected = { onItemSelected(it) })
+        onItemSelected = { onItemSelected(it) },
+        onBackPressed = {
+            searchViewModel.clearSearch()
+            onBackPressed()
+        }
+    )
 }

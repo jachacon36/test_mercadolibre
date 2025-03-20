@@ -64,7 +64,7 @@ fun ItemResult(item: ResultDomainModel, onItemSelected: (String) -> Unit) {
                     modifier = Modifier.fillMaxWidth()
                 )
                 Text(
-                    text = stringResource(id = R.string.price, item.price.toInt()),
+                    text = stringResource(id = R.string.price, item.price),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.fillMaxWidth()
                 )

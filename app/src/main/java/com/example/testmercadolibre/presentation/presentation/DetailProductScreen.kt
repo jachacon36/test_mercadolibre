@@ -1,5 +1,6 @@
 package com.example.testmercadolibre.presentation.presentation
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -14,7 +15,7 @@ import com.example.testmercadolibre.presentation.state.ProductDetailState
 import com.example.testmercadolibre.utils.Constant.PRODUCT
 
 @Composable
-fun DetailProductScreen(state: ProductDetailState) {
+fun DetailProductScreen(state: ProductDetailState, onBackPressed: () -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -24,6 +25,9 @@ fun DetailProductScreen(state: ProductDetailState) {
 
         TopBar(viewType = PRODUCT)
         ContentSectionDetailProduct(state = state)
+    }
+    BackHandler {
+        onBackPressed()
     }
 }
 

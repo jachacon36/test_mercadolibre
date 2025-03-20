@@ -31,6 +31,9 @@ fun NavGraphBuilder.navigationGraph(
             query = query,
             onItemSelected = { id ->
                 navGraphController.navigate("detailProduct/$id")
+            },
+            onBackPressed = {
+                navGraphController.popBackStack()
             }
         )
     }
@@ -38,7 +41,10 @@ fun NavGraphBuilder.navigationGraph(
         val id = backStackEntry.arguments?.getString("id") ?: ""
         DetailProductRoute(
             productDetailViewModel = productDetailViewModel,
-            id = id
+            id = id,
+            onBackPressed = {
+                navGraphController.popBackStack()
+            }
         )
     }
 }

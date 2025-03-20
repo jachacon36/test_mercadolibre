@@ -9,9 +9,11 @@ fun HomeRoute(
     homeViewModel: HomeViewModel,
     onSearch: (String) -> Unit = {},
 ) {
-    LaunchedEffect(Unit) {
-        homeViewModel.getHome()
-    }
     val state = homeViewModel.homeState.value
+    LaunchedEffect(Unit) {
+        if (state.data == null){
+            homeViewModel.getHome()
+        }
+    }
     HomeScreen(state = state, onSearch = { onSearch(it) })
 }

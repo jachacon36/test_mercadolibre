@@ -7,11 +7,17 @@ import com.example.testmercadolibre.presentation.viewmodel.ProductDetailViewMode
 @Composable
 fun DetailProductRoute(
     productDetailViewModel: ProductDetailViewModel,
-    id: String
+    id: String,
+    onBackPressed: () -> Unit = {},
 ) {
-    LaunchedEffect(Unit) {
-        productDetailViewModel.geProductDetail(id = id)
-    }
     val state = productDetailViewModel.productDetailState.value
-    DetailProductScreen(state = state)
+    LaunchedEffect(Unit) {
+        if (state.data == null) {
+            productDetailViewModel.getProductDetail(id = id)
+        }
+    }
+    DetailProductScreen(state = state, onBackPressed = {
+        productDetailViewModel.clearProductDedail()
+        onBackPressed()
+    })
 }

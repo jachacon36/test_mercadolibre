@@ -25,18 +25,24 @@ class HomeViewModel @Inject constructor(private val getHomeUseCase: GetHomeUseCa
         getHomeUseCase.invoke().onEach {
             when (it) {
                 is ViewState.Loading -> {
-                    _homeState.value = HomeState(isLoading = true)
+                    _homeState.value = _homeState.value.copy(isLoading = true)
                 }
 
                 is ViewState.Success -> {
-                    _homeState.value = HomeState(data = it.data?.components)
+                    _homeState.value = _homeState.value.copy(
+                        isLoading = false,
+                        data = it.data?.components,
+                        error = false
+                    )
                 }
 
                 is ViewState.Error -> {
-                    _homeState.value = HomeState(error = true)
+                    _homeState.value = _homeState.value.copy(
+                        isLoading = false,
+                        error = true
+                    )
                 }
             }
         }.launchIn(viewModelScope)
     }
-
 }

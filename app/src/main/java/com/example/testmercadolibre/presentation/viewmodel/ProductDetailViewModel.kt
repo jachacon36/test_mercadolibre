@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.testmercadolibre.common.ViewState
 import com.example.testmercadolibre.domain.usecase.GetProductDetailsUseCase
 import com.example.testmercadolibre.presentation.state.ProductDetailState
+import com.example.testmercadolibre.presentation.state.SearchState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -19,22 +20,25 @@ class ProductDetailViewModel @Inject constructor(private val getProductDetailsUs
     private val _productDetailState = mutableStateOf(ProductDetailState())
     val productDetailState: State<ProductDetailState> get() = _productDetailState
 
-    fun geProductDetail(id: String) {
+    fun getProductDetail(id: String) {
         getProductDetailsUseCase.invoke(id = id).onEach {
             when (it) {
                 is ViewState.Loading -> {
-                    _productDetailState.value = ProductDetailState(isLoading = true)
+                    _productDetailState.value = _productDetailState.value.copy(isLoading = true)
                 }
 
                 is ViewState.Success -> {
-                    _productDetailState.value = ProductDetailState(data = it.data)
+                    _productDetailState.value = _productDetailState.value.copy(data = it.data)
                 }
 
                 is ViewState.Error -> {
-                    _productDetailState.value = ProductDetailState(error = true)
+                    _productDetailState.value = _productDetailState.value.copy(error = true)
                 }
             }
         }.launchIn(viewModelScope)
     }
 
+    fun clearProductDedail() {
+        _productDetailState.value = ProductDetailState()
+    }
 }
