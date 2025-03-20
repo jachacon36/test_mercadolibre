@@ -11,4 +11,6 @@ object Constant {
     const val AUTHORIZATION = "Authorization"
     const val BEARER = "Bearer"
     const val ERROR_CODE = 401
+    const val PRODUCT = "product"
+    const val SEARCH = "search"
 }

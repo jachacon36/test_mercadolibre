@@ -5,5 +5,5 @@ import com.example.testmercadolibre.domain.model.DetailProductDomainModel
 data class ProductDetailState(
     val isLoading: Boolean = false,
     val data: DetailProductDomainModel? = null,
-    var error: String = ""
+    var error: Boolean = false
 )

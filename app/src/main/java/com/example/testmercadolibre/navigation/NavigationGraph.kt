@@ -3,6 +3,7 @@ package com.example.testmercadolibre.navigation
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
+import com.example.testmercadolibre.presentation.presentation.DetailProductRoute
 import com.example.testmercadolibre.presentation.presentation.HomeRoute
 import com.example.testmercadolibre.presentation.presentation.SearchRoute
 import com.example.testmercadolibre.presentation.viewmodel.HomeViewModel
@@ -13,7 +14,7 @@ fun NavGraphBuilder.navigationGraph(
     navGraphController: NavHostController,
     searchViewModel: SearchViewModel,
     productDetailViewModel: ProductDetailViewModel,
-    homeViewModel: HomeViewModel
+    homeViewModel: HomeViewModel,
 ) {
     composable("homeScreen") {
         HomeRoute(
@@ -27,7 +28,17 @@ fun NavGraphBuilder.navigationGraph(
         val query = backStackEntry.arguments?.getString("query") ?: ""
         SearchRoute(
             searchViewModel = searchViewModel,
-            query = query
+            query = query,
+            onItemSelected = { id ->
+                navGraphController.navigate("detailProduct/$id")
+            }
+        )
+    }
+    composable("detailProduct/{id}") { backStackEntry ->
+        val id = backStackEntry.arguments?.getString("id") ?: ""
+        DetailProductRoute(
+            productDetailViewModel = productDetailViewModel,
+            id = id
         )
     }
 }

@@ -2,6 +2,7 @@ package com.example.testmercadolibre.presentation.presentation.composables
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,13 +26,16 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.testmercadolibre.domain.model.InstallmentsDomainModel
 import com.example.testmercadolibre.domain.model.ResultDomainModel
 import com.example.testmercadolibre.domain.model.ShippingDomainModel
+import com.example.testmercadolibre.ui.theme.Blue
+import com.example.testmercadolibre.ui.theme.Green
 
 @Composable
-fun ItemResult(item: ResultDomainModel) {
+fun ItemResult(item: ResultDomainModel, onItemSelected: (String) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(colorResource(id = R.color.white))
+            .clickable { onItemSelected(item.id) }
     ) {
         Row(
             modifier = Modifier
@@ -39,7 +43,7 @@ fun ItemResult(item: ResultDomainModel) {
                 .padding(10.dp)
         ) {
             Image(
-                painter = rememberAsyncImagePainter (
+                painter = rememberAsyncImagePainter(
                     model = item.thumbnail,
                     error = painterResource(R.drawable.baseline_broken_image)
                 ),
@@ -60,13 +64,17 @@ fun ItemResult(item: ResultDomainModel) {
                     modifier = Modifier.fillMaxWidth()
                 )
                 Text(
-                    text = "$ ${item.price}",
+                    text = stringResource(id = R.string.price, item.price.toInt()),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.fillMaxWidth()
                 )
                 item.installments?.let { installments ->
                     Text(
-                        text = "en ${installments.quantity}x ${installments.amount}",
+                        text = stringResource(
+                            id = R.string.installments,
+                            installments.quantity,
+                            installments.amount
+                        ),
                         style = MaterialTheme.typography.titleSmall,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -76,7 +84,7 @@ fun ItemResult(item: ResultDomainModel) {
                         Text(
                             text = stringResource(id = R.string.free_shipping),
                             style = MaterialTheme.typography.labelSmall,
-                            color = colorResource(id = R.color.green),
+                            color = Green,
                             modifier = Modifier.fillMaxWidth()
                         )
                     }
@@ -88,7 +96,7 @@ fun ItemResult(item: ResultDomainModel) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_baseline_favorite_border),
                     contentDescription = null,
-                    tint = colorResource(id = R.color.blue),
+                    tint = Blue,
                     modifier = Modifier
                         .height(20.dp)
                 )
@@ -110,6 +118,7 @@ fun ItemResultPreview() {
             "https://http2.mlstatic.com/D_682268-MLA45719482741_042021-O.jpg",
             shipping = ShippingDomainModel(true),
             installments = InstallmentsDomainModel(12, 10.0)
-        )
+        ),
+        onItemSelected = {}
     )
 }

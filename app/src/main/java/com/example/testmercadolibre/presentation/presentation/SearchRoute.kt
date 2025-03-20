@@ -8,6 +8,7 @@ import com.example.testmercadolibre.presentation.viewmodel.SearchViewModel
 fun SearchRoute(
     searchViewModel: SearchViewModel,
     query: String,
+    onItemSelected: (String) -> Unit = {},
 ) {
     val state = searchViewModel.searchState.value
 
@@ -15,5 +16,9 @@ fun SearchRoute(
         searchViewModel.getSearch(query)
     }
 
-    SearchScreen(state = state, query = query,onSearch = searchViewModel::getSearch)
+    SearchScreen(
+        state = state,
+        query = query,
+        onSearch = searchViewModel::getSearch,
+        onItemSelected = { onItemSelected(it) })
 }

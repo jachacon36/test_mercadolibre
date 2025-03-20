@@ -15,7 +15,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,6 +22,7 @@ import com.example.testmercadolibre.R
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
+import com.example.testmercadolibre.ui.theme.ColorAccent
 
 @Composable
 fun SearchView(
@@ -46,7 +46,7 @@ fun SearchView(
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_search),
                 contentDescription = null,
-                tint = colorResource(id = R.color.colorAccent),
+                tint = ColorAccent,
                 modifier = Modifier.size(30.dp)
             )
         },

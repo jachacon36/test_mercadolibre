@@ -10,14 +10,13 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.testmercadolibre.presentation.state.SearchState
+import com.example.testmercadolibre.presentation.state.ProductDetailState
 
 @Composable
-fun ContentSectionSearch(state: SearchState, onItemSelected: (String) -> Unit) {
+fun ContentSectionDetailProduct(state: ProductDetailState) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .verticalScroll(rememberScrollState())
     ) {
         Box(
             modifier = Modifier
@@ -31,7 +30,8 @@ fun ContentSectionSearch(state: SearchState, onItemSelected: (String) -> Unit) {
                     }
 
                     state.data != null -> {
-                        SearchResultList(items = state.data.results, onItemSelected = onItemSelected)
+                        ProductDetails(state.data)
+                        ActionButtons()
                     }
 
                     state.isLoading -> {

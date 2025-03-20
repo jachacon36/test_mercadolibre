@@ -11,4 +11,7 @@
     <string name="new_title">Nuevo</string>
     <string name="used_title">Usado</string>
     <string name="promotions">Ofertas</string>
+    <string name="quantity">Cantidad: %1$d/%2$s</string>
+    <string name="price">$ %1$d</string>
+    <string name="installments">en %1$d x %2$s</string>
 </resources>

@@ -31,7 +31,7 @@ class ProductDetailViewModel @Inject constructor(private val getProductDetailsUs
                 }
 
                 is ViewState.Error -> {
-                    _productDetailState.value = ProductDetailState(error = it.message.toString())
+                    _productDetailState.value = ProductDetailState(error = true)
                 }
             }
         }.launchIn(viewModelScope)

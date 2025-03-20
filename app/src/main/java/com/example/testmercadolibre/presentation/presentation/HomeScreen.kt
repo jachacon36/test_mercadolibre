@@ -9,9 +9,9 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.testmercadolibre.R
 import com.example.testmercadolibre.presentation.presentation.composables.ContentSectionHome
-import com.example.testmercadolibre.presentation.presentation.composables.TopSection
+import com.example.testmercadolibre.presentation.presentation.composables.TopBar
 import com.example.testmercadolibre.presentation.state.HomeState
-import com.example.testmercadolibre.presentation.state.SearchState
+import com.example.testmercadolibre.utils.Constant.SEARCH
 
 @Composable
 fun HomeScreen(state: HomeState, onSearch: (String) -> Unit = {}) {
@@ -20,7 +20,7 @@ fun HomeScreen(state: HomeState, onSearch: (String) -> Unit = {}) {
             .fillMaxSize()
             .background(colorResource(id = R.color.background))
     ) {
-        TopSection(query = "", onSearch = { onSearch(it) })
+        TopBar(viewType = SEARCH, onSearch = { onSearch(it) })
         ContentSectionHome(state = state)
     }
 }

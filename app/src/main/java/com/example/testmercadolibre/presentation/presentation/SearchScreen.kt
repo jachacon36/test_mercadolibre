@@ -9,18 +9,19 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.testmercadolibre.R
 import com.example.testmercadolibre.presentation.presentation.composables.ContentSectionSearch
-import com.example.testmercadolibre.presentation.presentation.composables.TopSection
+import com.example.testmercadolibre.presentation.presentation.composables.TopBar
 import com.example.testmercadolibre.presentation.state.SearchState
+import com.example.testmercadolibre.utils.Constant.SEARCH
 
 @Composable
-fun SearchScreen(state: SearchState, onSearch: (String) -> Unit = {}, query: String) {
+fun SearchScreen(state: SearchState, onSearch: (String) -> Unit = {}, query: String, onItemSelected: (String) -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.background))
     ) {
-        TopSection(query = query,onSearch = { onSearch(it) })
-        ContentSectionSearch(state = state)
+        TopBar(query = query, viewType = SEARCH,onSearch = { onSearch(it) })
+        ContentSectionSearch(state = state, onItemSelected = onItemSelected)
     }
 }
 
