@@ -10,12 +10,10 @@ fun SearchRoute(
     query: String,
     onItemSelected: (String) -> Unit = {},
 ) {
-    val state = searchViewModel.searchState.value
-
     LaunchedEffect(Unit) {
         searchViewModel.getSearch(query)
     }
-
+    val state = searchViewModel.searchState.value
     SearchScreen(
         state = state,
         query = query,
