@@ -22,7 +22,6 @@ fun ContentSectionSearch(state: SearchState, onItemSelected: (String) -> Unit) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(20.dp)
         ) {
             Column {
                 when {
