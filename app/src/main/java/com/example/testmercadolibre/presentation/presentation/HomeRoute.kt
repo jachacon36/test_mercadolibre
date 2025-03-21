@@ -7,7 +7,7 @@ import com.example.testmercadolibre.presentation.viewmodel.HomeViewModel
 @Composable
 fun HomeRoute(
     homeViewModel: HomeViewModel,
-    onSearch: (String) -> Unit = {},
+    onSearch: (String) -> Unit = {}
 ) {
     val state = homeViewModel.homeState.value
     LaunchedEffect(Unit) {
@@ -15,5 +15,5 @@ fun HomeRoute(
             homeViewModel.getHome()
         }
     }
-    HomeScreen(state = state, onSearch = { onSearch(it) })
+    HomeScreen(state = state,onSearch = { onSearch(it) })
 }

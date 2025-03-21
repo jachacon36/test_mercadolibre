@@ -21,11 +21,13 @@ fun NavGraphBuilder.navigationGraph(
             homeViewModel = homeViewModel,
             onSearch = { query ->
                 navGraphController.navigate("searchScreen/$query")
+                println("homeScreen: $query")
             }
         )
     }
     composable("searchScreen/{query}") { backStackEntry ->
         val query = backStackEntry.arguments?.getString("query") ?: ""
+        println("homeScreen: $query")
         SearchRoute(
             searchViewModel = searchViewModel,
             query = query,
@@ -33,7 +35,7 @@ fun NavGraphBuilder.navigationGraph(
                 navGraphController.navigate("detailProduct/$id")
             },
             onBackPressed = {
-                navGraphController.popBackStack()
+                navGraphController.navigateUp()
             }
         )
     }
@@ -43,7 +45,7 @@ fun NavGraphBuilder.navigationGraph(
             productDetailViewModel = productDetailViewModel,
             id = id,
             onBackPressed = {
-                navGraphController.popBackStack()
+                navGraphController.navigateUp()
             }
         )
     }

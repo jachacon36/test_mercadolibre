@@ -13,16 +13,23 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class SearchViewModel @Inject constructor(private val getSearchUseCase: GetSearchUseCase) : ViewModel() {
+class SearchViewModel @Inject constructor(private val getSearchUseCase: GetSearchUseCase) :
+    ViewModel() {
 
     private val _searchState = mutableStateOf(SearchState())
     val searchState: State<SearchState> get() = _searchState
+    var query: String = ""
 
     fun getSearch(query: String) {
+        this.query = query
         getSearchUseCase.invoke(query = query).onEach {
             when (it) {
                 is ViewState.Loading -> {
-                    _searchState.value = _searchState.value.copy(isLoading = true, data = null, error = false)
+                    _searchState.value = _searchState.value.copy(
+                        isLoading = true,
+                        data = null,
+                        error = false
+                    )
                 }
 
                 is ViewState.Success -> {
@@ -45,5 +52,6 @@ class SearchViewModel @Inject constructor(private val getSearchUseCase: GetSearc
 
     fun clearSearch() {
         _searchState.value = SearchState()
+        query = ""
     }
 }

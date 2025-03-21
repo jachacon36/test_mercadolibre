@@ -23,7 +23,7 @@ fun HomeScreen(state: HomeState, onSearch: (String) -> Unit = {}) {
             .verticalScroll(rememberScrollState())
             .background(colorResource(id = R.color.background))
     ) {
-        TopBar(viewType = SEARCH, onSearch = { onSearch(it) })
+        TopBar(query = "",viewType = SEARCH, onSearch = { onSearch(it) })
         ContentSectionHome(state = state)
     }
 }

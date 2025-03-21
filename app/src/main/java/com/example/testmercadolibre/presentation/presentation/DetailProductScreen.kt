@@ -23,7 +23,7 @@ fun DetailProductScreen(state: ProductDetailState, onBackPressed: () -> Unit = {
             .verticalScroll(rememberScrollState())
     ) {
 
-        TopBar(viewType = PRODUCT)
+        TopBar(query = "",viewType = PRODUCT)
         ContentSectionDetailProduct(state = state)
     }
     BackHandler {

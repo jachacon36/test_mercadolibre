@@ -28,11 +28,12 @@ import com.example.testmercadolibre.ui.theme.ColorAccent
 fun SearchView(
     modifier: Modifier = Modifier,
     onSearch: (String) -> Unit = {},
-    query: String,
+    query: String
 ) {
     var searchText by remember { mutableStateOf(query) }
     val keyboardController = LocalSoftwareKeyboardController.current
-
+    println("SearchView query: $query")
+    println("SearchView searchText: $searchText")
     TextField(
         value = searchText,
         shape = RoundedCornerShape(30.dp),
@@ -76,5 +77,5 @@ fun SearchView(
 @Preview(showBackground = true)
 @Composable
 fun SearchViewPreview() {
-    SearchView(query = "", onSearch = {})
+    SearchView(onSearch = {}, query = "")
 }

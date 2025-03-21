@@ -18,16 +18,16 @@ import com.example.testmercadolibre.utils.Constant.SEARCH
 fun SearchScreen(
     state: SearchState,
     onSearch: (String) -> Unit = {},
-    query: String,
     onItemSelected: (String) -> Unit = {},
     onBackPressed: () -> Unit = {},
+    query: String,
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.background))
     ) {
-        TopBar(query = query, viewType = SEARCH, onSearch = { onSearch(it) })
+        TopBar(query = query, viewType = SEARCH, onSearch = onSearch)
         ContentSectionSearch(state = state, onItemSelected = onItemSelected)
     }
     BackHandler {

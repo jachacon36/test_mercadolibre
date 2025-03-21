@@ -26,7 +26,7 @@ import com.example.testmercadolibre.utils.Constant.PRODUCT
 import com.example.testmercadolibre.utils.Constant.SEARCH
 
 @Composable
-fun TopBar(query: String = "", viewType: String, onSearch: (String) -> Unit = {}) {
+fun TopBar(query: String, viewType: String, onSearch: (String) -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -84,7 +84,8 @@ fun TopBar(query: String = "", viewType: String, onSearch: (String) -> Unit = {}
                     SearchView(
                         modifier = Modifier.weight(1f),
                         query = query,
-                        onSearch = { onSearch(it) })
+                        onSearch = { onSearch(it) }
+                    )
                     Spacer(modifier = Modifier.width(10.dp))
                     Icon(
                         painter = painterResource(id = R.drawable.ic_baseline_shopping_cart),
@@ -126,11 +127,11 @@ fun TopBar(query: String = "", viewType: String, onSearch: (String) -> Unit = {}
 @Preview(showBackground = true)
 @Composable
 fun TopBarPreviewProduct() {
-    TopBar(viewType = PRODUCT, onSearch = {})
+    TopBar(query = "", viewType = PRODUCT, onSearch = {})
 }
 
 @Preview(showBackground = true)
 @Composable
 fun TopBarPreviewSearch() {
-    TopBar(viewType = SEARCH, onSearch = {})
+    TopBar(query = "", viewType = SEARCH, onSearch = {})
 }
