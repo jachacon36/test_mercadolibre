@@ -32,8 +32,6 @@ fun SearchView(
 ) {
     var searchText by remember { mutableStateOf(query) }
     val keyboardController = LocalSoftwareKeyboardController.current
-    println("SearchView query: $query")
-    println("SearchView searchText: $searchText")
     TextField(
         value = searchText,
         shape = RoundedCornerShape(30.dp),

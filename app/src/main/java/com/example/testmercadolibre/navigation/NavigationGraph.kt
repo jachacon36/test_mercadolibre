@@ -29,13 +29,11 @@ fun NavGraphBuilder.navigationGraph(
             homeViewModel = homeViewModel,
             onSearch = { query ->
                 navGraphController.navigate(String.format(SEARCH_SCREEN_ROUTE_WITH_QUERY, query))
-                println("homeScreen: $query")
             }
         )
     }
     composable(SEARCH_SCREEN_ROUTE) { backStackEntry ->
         val query = backStackEntry.arguments?.getString(QUERY_ARGUMENT) ?: String().toStringOrEmpty()
-        println("homeScreen: $query")
         SearchRoute(
             searchViewModel = searchViewModel,
             query = query,

@@ -11,7 +11,6 @@ fun SearchRoute(
     onItemSelected: (String) -> Unit = {},
     onBackPressed: () -> Unit = {},
 ) {
-    println("SearchRoute: $query")
     LaunchedEffect(Unit) {
         if (searchViewModel.searchState.value.data == null) {
             searchViewModel.getSearch(query)
