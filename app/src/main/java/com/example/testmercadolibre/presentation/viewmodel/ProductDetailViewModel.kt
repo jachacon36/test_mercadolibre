@@ -24,15 +24,21 @@ class ProductDetailViewModel @Inject constructor(private val getProductDetailsUs
         getProductDetailsUseCase.invoke(id = id).onEach {
             when (it) {
                 is ViewState.Loading -> {
-                    _productDetailState.value = _productDetailState.value.copy(isLoading = true)
+                    _productDetailState.value =
+                        _productDetailState.value.copy(isLoading = true, data = null, error = false)
                 }
 
                 is ViewState.Success -> {
-                    _productDetailState.value = _productDetailState.value.copy(data = it.data)
+                    _productDetailState.value = _productDetailState.value.copy(
+                        isLoading = false,
+                        data = it.data,
+                        error = false
+                    )
                 }
 
                 is ViewState.Error -> {
-                    _productDetailState.value = _productDetailState.value.copy(error = true)
+                    _productDetailState.value =
+                        _productDetailState.value.copy(isLoading = false, error = true)
                 }
             }
         }.launchIn(viewModelScope)

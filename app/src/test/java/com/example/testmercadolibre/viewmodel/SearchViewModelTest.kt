@@ -1,4 +1,4 @@
-package com.example.testmercadolibre
+package com.example.testmercadolibre.viewmodel
 
 import com.example.testmercadolibre.common.ViewState
 import com.example.testmercadolibre.domain.model.ResultDomainModel
