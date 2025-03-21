@@ -66,10 +66,17 @@ app/
 2. Open the project in Android Studio.
 3. Build and run the project on an emulator or physical device.
 
+## Associated PRs
+
+1. [![PR #1](https://img.shields.io/badge/status-merged-brightgreen?logo=github&logoColor=white&label=PR%20%231) Feature: Search Functionality for MercadoLibre ](https://github.com/jachacon36/test_mercadolibre/pull/1)
+2. [![PR #2](https://img.shields.io/badge/status-merged-brightgreen?logo=github&logoColor=white&label=PR%20%232) Test: Add unit tests ](https://github.com/jachacon36/test_mercadolibre/pull/2)
+
 ## Preview
+
 <img src="https://github.com/user-attachments/assets/18f639c6-413a-4179-9db0-a65a78b5a2e1" width="200px">
 
 ## Screenshots
+
 <img src="https://github.com/user-attachments/assets/2750209b-a2e0-47b2-8f50-8e3dbbcf382d" width="200px">
 <img src="https://github.com/user-attachments/assets/1239192d-543b-4dca-8331-e724f802b95f" width="200px">
 <img src="https://github.com/user-attachments/assets/b2816005-bf26-4db6-8eb4-c916d50e996b" width="200px">
