@@ -70,6 +70,7 @@ app/
 
 1. [![PR #1](https://img.shields.io/badge/status-merged-brightgreen?logo=github&logoColor=white&label=PR%20%231) Feature: Search Functionality for MercadoLibre ](https://github.com/jachacon36/test_mercadolibre/pull/1)
 2. [![PR #2](https://img.shields.io/badge/status-merged-brightgreen?logo=github&logoColor=white&label=PR%20%232) Test: Add unit tests ](https://github.com/jachacon36/test_mercadolibre/pull/2)
+3. [![PR #3](https://img.shields.io/badge/status-merged-brightgreen?logo=github&logoColor=white&label=PR%20%233) Refactor: Refactor: Remove Texts and Println Statements ](https://github.com/jachacon36/test_mercadolibre/pull/3)
 
 ## Preview
 
