@@ -9,6 +9,7 @@ import com.example.testmercadolibre.domain.model.DetailProductDomainModel
 import com.example.testmercadolibre.domain.model.SearchDomainModel
 import com.example.testmercadolibre.domain.model.TokenResponseDomainModel
 import com.example.testmercadolibre.domain.repository.Repository
+import com.example.testmercadolibre.utils.Constant.ERROR_LOADING_HOME_DATA
 import javax.inject.Inject
 
 
@@ -34,7 +35,7 @@ class RepositoryImpl @Inject constructor(private val apiService: ApiService, pri
 
     override suspend fun getHome(): ComponetsJSONDomainModel {
         val homeData = localService.getHome()
-        return homeData?.toDomainModel() ?: throw Exception("Error loading home data from JSON")
+        return homeData?.toDomainModel() ?: throw Exception(ERROR_LOADING_HOME_DATA)
     }
 
 

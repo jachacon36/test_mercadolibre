@@ -8,9 +8,13 @@ import java.io.IOException
 
 class LocalService(private val context: Context) {
 
+    companion object {
+        private const val HOME_JSON_FILE = "home.json"
+    }
+
     fun getHome(): ComponetsJSONDTO? {
         return try {
-            val jsonString = readJsonFromAssets(context, "home.json")
+            val jsonString = readJsonFromAssets(context, HOME_JSON_FILE)
             if (jsonString != null) {
                 Gson().fromJson(jsonString, ComponetsJSONDTO::class.java)
             } else {

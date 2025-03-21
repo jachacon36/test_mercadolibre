@@ -19,7 +19,7 @@ fun ContentSectionHome(state: HomeState) {
 
             state.data != null -> {
                 ExhibitorRow(state.data.first().elements ?: emptyList())
-                PromotionsGrid(state.data.last().items ?: emptyList())
+                PromotionsGrid(state.data.last().items)
             }
 
             state.isLoading -> {

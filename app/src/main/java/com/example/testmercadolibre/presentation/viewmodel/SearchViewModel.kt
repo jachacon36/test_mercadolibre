@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.testmercadolibre.common.ViewState
 import com.example.testmercadolibre.domain.usecase.GetSearchUseCase
 import com.example.testmercadolibre.presentation.state.SearchState
+import com.example.testmercadolibre.utils.toStringOrEmpty
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -18,7 +19,7 @@ class SearchViewModel @Inject constructor(private val getSearchUseCase: GetSearc
 
     private val _searchState = mutableStateOf(SearchState())
     val searchState: State<SearchState> get() = _searchState
-    var query: String = ""
+    var query: String = String().toStringOrEmpty()
 
     fun getSearch(query: String) {
         this.query = query

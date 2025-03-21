@@ -14,6 +14,7 @@ import com.example.testmercadolibre.presentation.presentation.composables.Conten
 import com.example.testmercadolibre.presentation.presentation.composables.TopBar
 import com.example.testmercadolibre.presentation.state.HomeState
 import com.example.testmercadolibre.utils.Constant.SEARCH
+import com.example.testmercadolibre.utils.toStringOrEmpty
 
 @Composable
 fun HomeScreen(state: HomeState, onSearch: (String) -> Unit = {}) {
@@ -23,7 +24,7 @@ fun HomeScreen(state: HomeState, onSearch: (String) -> Unit = {}) {
             .verticalScroll(rememberScrollState())
             .background(colorResource(id = R.color.background))
     ) {
-        TopBar(query = "",viewType = SEARCH, onSearch = { onSearch(it) })
+        TopBar(query = String().toStringOrEmpty(),viewType = SEARCH, onSearch = { onSearch(it) })
         ContentSectionHome(state = state)
     }
 }

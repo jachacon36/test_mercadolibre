@@ -9,6 +9,14 @@ import com.example.testmercadolibre.presentation.presentation.SearchRoute
 import com.example.testmercadolibre.presentation.viewmodel.HomeViewModel
 import com.example.testmercadolibre.presentation.viewmodel.ProductDetailViewModel
 import com.example.testmercadolibre.presentation.viewmodel.SearchViewModel
+import com.example.testmercadolibre.utils.Constant.DETAIL_PRODUCT_ROUTE
+import com.example.testmercadolibre.utils.Constant.DETAIL_PRODUCT_ROUTE_WITH_ID
+import com.example.testmercadolibre.utils.Constant.HOME_SCREEN_ROUTE
+import com.example.testmercadolibre.utils.Constant.ID_ARGUMENT
+import com.example.testmercadolibre.utils.Constant.QUERY_ARGUMENT
+import com.example.testmercadolibre.utils.Constant.SEARCH_SCREEN_ROUTE
+import com.example.testmercadolibre.utils.Constant.SEARCH_SCREEN_ROUTE_WITH_QUERY
+import com.example.testmercadolibre.utils.toStringOrEmpty
 
 fun NavGraphBuilder.navigationGraph(
     navGraphController: NavHostController,
@@ -16,31 +24,31 @@ fun NavGraphBuilder.navigationGraph(
     productDetailViewModel: ProductDetailViewModel,
     homeViewModel: HomeViewModel,
 ) {
-    composable("homeScreen") {
+    composable(HOME_SCREEN_ROUTE) {
         HomeRoute(
             homeViewModel = homeViewModel,
             onSearch = { query ->
-                navGraphController.navigate("searchScreen/$query")
+                navGraphController.navigate(String.format(SEARCH_SCREEN_ROUTE_WITH_QUERY, query))
                 println("homeScreen: $query")
             }
         )
     }
-    composable("searchScreen/{query}") { backStackEntry ->
-        val query = backStackEntry.arguments?.getString("query") ?: ""
+    composable(SEARCH_SCREEN_ROUTE) { backStackEntry ->
+        val query = backStackEntry.arguments?.getString(QUERY_ARGUMENT) ?: String().toStringOrEmpty()
         println("homeScreen: $query")
         SearchRoute(
             searchViewModel = searchViewModel,
             query = query,
             onItemSelected = { id ->
-                navGraphController.navigate("detailProduct/$id")
+                navGraphController.navigate(String.format(DETAIL_PRODUCT_ROUTE_WITH_ID, id))
             },
             onBackPressed = {
                 navGraphController.navigateUp()
             }
         )
     }
-    composable("detailProduct/{id}") { backStackEntry ->
-        val id = backStackEntry.arguments?.getString("id") ?: ""
+    composable(DETAIL_PRODUCT_ROUTE) { backStackEntry ->
+        val id = backStackEntry.arguments?.getString(ID_ARGUMENT) ?: String().toStringOrEmpty()
         DetailProductRoute(
             productDetailViewModel = productDetailViewModel,
             id = id,

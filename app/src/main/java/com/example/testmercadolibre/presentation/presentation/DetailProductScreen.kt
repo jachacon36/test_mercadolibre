@@ -13,6 +13,7 @@ import com.example.testmercadolibre.presentation.presentation.composables.Conten
 import com.example.testmercadolibre.presentation.presentation.composables.TopBar
 import com.example.testmercadolibre.presentation.state.ProductDetailState
 import com.example.testmercadolibre.utils.Constant.PRODUCT
+import com.example.testmercadolibre.utils.toStringOrEmpty
 
 @Composable
 fun DetailProductScreen(state: ProductDetailState, onBackPressed: () -> Unit = {}) {
@@ -23,7 +24,7 @@ fun DetailProductScreen(state: ProductDetailState, onBackPressed: () -> Unit = {
             .verticalScroll(rememberScrollState())
     ) {
 
-        TopBar(query = "",viewType = PRODUCT)
+        TopBar(query = String().toStringOrEmpty(),viewType = PRODUCT)
         ContentSectionDetailProduct(state = state)
     }
     BackHandler {

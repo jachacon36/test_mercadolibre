@@ -13,4 +13,12 @@ object Constant {
     const val ERROR_CODE = 401
     const val PRODUCT = "product"
     const val SEARCH = "search"
+    const val DETAIL_PRODUCT_ROUTE = "detailProduct/{id}"
+    const val SEARCH_SCREEN_ROUTE = "searchScreen/{query}"
+    const val HOME_SCREEN_ROUTE = "homeScreen"
+    const val SEARCH_SCREEN_ROUTE_WITH_QUERY = "searchScreen/%s"
+    const val DETAIL_PRODUCT_ROUTE_WITH_ID = "detailProduct/%s"
+    const val QUERY_ARGUMENT = "query"
+    const val ID_ARGUMENT = "id"
+    const val ERROR_LOADING_HOME_DATA = "Error loading home data from JSON"
 }

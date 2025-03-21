@@ -8,7 +8,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.testmercadolibre.domain.model.ElementDomainModel
 import com.example.testmercadolibre.domain.model.PictureURLDomainModel
 
 @Composable
