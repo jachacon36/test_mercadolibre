@@ -8,6 +8,7 @@ import com.example.testmercadolibre.common.ViewState
 import com.example.testmercadolibre.domain.usecase.GetProductDetailsUseCase
 import com.example.testmercadolibre.presentation.state.ProductDetailState
 import com.example.testmercadolibre.presentation.state.SearchState
+import com.example.testmercadolibre.utils.toStringOrEmpty
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -20,7 +21,10 @@ class ProductDetailViewModel @Inject constructor(private val getProductDetailsUs
     private val _productDetailState = mutableStateOf(ProductDetailState())
     val productDetailState: State<ProductDetailState> get() = _productDetailState
 
+    var id: String = String.toStringOrEmpty()
+
     fun getProductDetail(id: String) {
+        this.id = id
         getProductDetailsUseCase.invoke(id = id).onEach {
             when (it) {
                 is ViewState.Loading -> {
@@ -46,5 +50,6 @@ class ProductDetailViewModel @Inject constructor(private val getProductDetailsUs
 
     fun clearProductDedail() {
         _productDetailState.value = ProductDetailState()
+        id = String.toStringOrEmpty()
     }
 }
